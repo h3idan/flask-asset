@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}
+新增部门名称/岗位名称
+{% endblock %}
+{% block static %}
+<style>
+    .right_td{
+        width: 320px; 
+    
+    }
+</style>
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('userManage.userList') }}">用户管理</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('userManage.departmentJobname') }}">新增部门名称/岗位名称</a>
+    </div>
+
+    <div class='bm'>
+        <h3>新增部门名称/岗位名称</h3>
+        <br />
+
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td align="right" class="acName right_td">
+                            部门名称（唯一）：</td>
+                        <td>
+                            <select id="acType" class="acSelect" name="department_id" style='float:left;'> 
+                                {% for department in data.department %}
+                                <option value="{{ department.id }}">{{ department.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName right_td">
+                            岗位名称（唯一）：</td>
+                        <td>
+                            <select id="acType" class="acSelect" name="jobname_id" style='float:left;'> 
+                                {% for jobname in data.jobname %}
+                                <option value="{{ jobname.id }}">{{ jobname.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <form action='{{ url_for('userManage.departmentJobname') }}' method='POST'>
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td align="right" class="acName right_td">
+                            部门名称（唯一）：</td>
+                        <td>
+                            <input type='text' style='float:left;' name='department' />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="right" class="acName right_td">
+                            岗位名称（唯一）：</td>
+                        <td>
+                            <input type='text' style='float:left;' name='jobname' />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center>
+         <button class='pn pnc' style='width:50px;'>添加</button>
+         <a href='{{ url_for('userManage.departmentJobname') }}'><button class='pn pnc' style='width:50px;'>重置</button></a>
+        </center>
+        </form>
+    </div>
+</td>
+{% endblock %}

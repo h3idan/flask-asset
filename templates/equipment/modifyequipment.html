@@ -1,0 +1,419 @@
+{% extends 'base.html' %}
+{% block title %}
+修改设备信息
+{% endblock %}
+{% block contents %}
+<link type="text/css" rel="stylesheet" href="/static/css/datepicker.css" />
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" language="javascript" src="/static/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+    $(function(){   
+        $('#dp1').datepicker({format:'yyyy-mm-dd'});
+        $('#dp2').datepicker({format:'yyyy-mm-dd'});
+        $('#dp3').datepicker({format:'yyyy-mm-dd'});
+        $('#dp4').datepicker({format:'yyyy-mm-dd'});
+    });
+</script>
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/modifyequipment/">修改设备信息</a>
+    </div>
+
+    <div class='bm'>
+        <h3>修改设备信息</h3>
+        <form action = "" method = "POST">
+        <div class='box'>
+            <table>
+                <tbody>          
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备类别:
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="equ_type" style='float:left' value="{{e.equ_type}}" readonly="readonly"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备代码:
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="code" style='float:left' value='{{e.code}}' readonly="readonly"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备名称：</td>
+                <td>
+                    <input type="text" class="px acInput" name="name" style='float:left' value="{{e.name}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    类别代码： 
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="type_code" style='float:left' value="{{e.type_code}}" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    类别名称： 
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="type_name" style='float:left' value="{{e.type_name}}" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    品牌：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="brand" style='float:left' value="{{e.brand}}"/>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    规格型号：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="type_model" style='float:left' value="{{e.type_model}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    机身号：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="equ_num" style='float:left' value="{{e.equ_num}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    用途：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="by_use" style='float:left' value="{{e.by_use}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    使用单位：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="use_unit" style='float:left' value="{{e.use_unit}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    单位代码：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="unit_num" style='float:left' value="{{e.unit_num}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    保管人：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="depository" style='float:left' value="{{e.depository}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    存放地点：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="location" style='float:left' value="{{e.location}}" />
+                    </span>
+                </td>
+            </tr>
+            {% if e.e_num == 0 %}
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备系统： 
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="system" style='float:left' value="{{e.system}}" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    MAC地址：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="MAC" style='float:left' value="{{e.mac_addr}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    系统更新日期：
+                </td>
+                <td>
+                    <input id="dp4" type="text" class="px acInput" name="upd_sys_time" style='float:left;' value="{{e.upd_sys_time}}" />
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    硬盘个数：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="disk_num" style='float:left' value="{{e.disk_num}}"/>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    硬盘型号：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="disk_type" style='float:left' value="{{e.disk_type}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    硬盘容量：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="disk_volume" style='float:left' value="{{e.disk_volume}}"  />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    硬盘序列号：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="disk_code" style='float:left' value="{{e.disk_code}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    IP地址：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="ip_address" style='float:left' value="{{e.ip_address}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    主机名：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="hostname" style='float:left' value="{{e.hostname}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    使用许可证：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="license" style='float:left' value="{{e.license}}"/>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    cpu规格：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="cpu" style='float:left' value="{{e.cpu}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    内存容量：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="memory_capacity" style='float:left' value="{{e.memory_capacity}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    光驱类型：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="cd_type" style='float:left' value="{{e.cd_type}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    光驱型号：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="cd_type_num" style='float:left' value="{{e.cd_type_num}}" />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    有无软驱：
+                </td>
+                <td>
+                    <select name = 'fd'  style="float:left;">
+                    <option value="0" {%if fd == 0 %} selected="selected" {%endif%}>无软驱</option>
+
+                    <option value="1" {%if fd == 1 %} selected="selected" {%endif%}>有软驱</option>
+                    </select>
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    有无读卡器：
+                </td>
+                <td>
+                    <select name = 'card_reader'  style="float:left;">
+                    <option value="0" {%if card_reader == 0 %} selected="selected" {%endif%}>无读卡器</option>
+
+                    <option value="1" {%if card_reader == 1 %} selected="selected" {%endif%}>有读卡器</option>
+                    </select>
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    外接设备：
+                </td>
+                <td>
+                    <textarea rows="3" cols="20"  name="external" style='float:left;' >{{e.external}}</textarea>
+                 </td>
+            </tr>
+            {%endif%}
+            {%if e.e_num == 1 %}
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    密级：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="secret_degree" style='float:left' value="{{e.secret_degree}}" />
+                    </span>
+                </td>
+            </tr>
+            {%endif%}
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    购置日期：
+                </td>
+                <td>
+                    <input id="dp1" type="text" class="px acInput" name="buy_date" style='float:left;' value="{{e.buy_time}}" />
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    更新日期：
+                </td>
+                <td>
+                    <input id="dp2"  type="text" class="px acInput" name="put_date" style='float:left;' value="{{e.put_time}}" />
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    打印日期：
+                </td>
+                <td>
+                    <input id="dp3" type="text" class="px acInput" name="out_date" style='float:left;' value="{{e.out_time}}" />
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    使用现状：
+                </td>
+                <td>
+                    <select name = 'status'  style="float:left;">
+                    <option value="0" {% if status == 0%} selected="selected" {%endif%}>已废弃</option>
+
+                    <option value="1" {%if status == 1%} selected="selected" {%endif%}>使用中</option>
+                    </select>
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    备注：
+                </td>
+                <td>
+                    <textarea rows="3" cols="20"  name="details" style='float:left;' >{{e.details}}</textarea>
+                 </td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center><button class='pn pnc' style='width:50px; margin-top:10px'>保存</button></center>
+    </form>
+    </div>
+</td>
+{% endblock %}

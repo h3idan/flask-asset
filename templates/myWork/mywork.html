@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+我的工作台
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('myWork.myWork') }}">我的工作台</a>
+    </div>
+
+    <div class='bm'>
+        <h3>工作清单／情况</h3>
+        <div class="controlbar cl nobar mbm">
+            <ul calss='datebar cl'>
+                <li><a href='{{ url_for('myWork.addWork') }}'><button class='pn pnc' style='width:50px; margin-bottom:10px; margin-left:700px;'>添加</button></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class='box'>
+            <table>
+                <tbody>
+                <tr>
+                    <th>工作内容</th>
+                    <th>紧急度</th>
+                    <th>完成情况</th>
+                    <th>操作</th>
+                </tr>
+                {% for work in data.work_list %}
+                <tr>
+                    <td title='{{ work.details }}'><center>{{ work.details|slice(10) }}</center></td>
+                    <td><center>{{ work.emergency }}</center></td>
+                    <td><center>{{ work.complate }}</center></td>
+                    <td><center><a href='{{ url_for('myWork.modifyWork', work_id='work.id') }}'>修改</a></center></td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        <a>上一页</a><span></span><a>下一页</a> </div>
+</td>
+{% endblock %}

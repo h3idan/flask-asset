@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}
+查看工程信息
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/viewpro/1">工程项目信息</a>
+    </div>
+    <div class='bm'>
+        <h3>工程项目信息</h3>
+        <span>{{msg}}</span>
+        <div class="controlbar cl nobar mbm">
+            <ul calss='datebar cl'>
+                <li><a href='/addpro'><button class='pn pnc' style='width:50px; margin-bottom:10px; margin-left:700px;'>添加</button></a>
+                </li>
+            </ul>
+        </div>
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>工程代码</th>
+                        <th>工程名称</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    {% for p in project %}
+                    <tr>
+                        <td><center><a href="/viewformal/{{p.id}}/1">{{p.code}}</a></center></td>
+                        <td><center>{{p.name}}</center></td>
+                        <td ><center>{{p.status}}</center></td>
+                        <th><a href=''>修改</a></th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+            <div class=pagination>
+                {% if pagination.page != 1 %}
+                <a href="{{pagination.page - 1}}">上一页</a>
+                {% endif %}
+                {% for page in pagination.iter_pages() %}
+                {% if page %}
+                {% if page != pagination.page %}
+                <a href="{{pagination.page}}">{{ page }}</a>
+                {% else %}
+                <strong>{{ page }}</strong>
+                {% endif %}
+                {% else %}
+                <span class=ellipsis>…</span>
+                {% endif %}
+                {% endfor %}
+                {% if pagination.has_next %}
+                <a href="{{pagination.page + 1}}">下一页</a>
+                {% endif %}
+            </div>
+    </div>
+</td>
+{% endblock %}
+
+

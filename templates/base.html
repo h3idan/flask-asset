@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+<script type="text/javascript" language="javascript" src="/static/js/common.js"></script>
+<!--script type="text/javascript" language="javascript" src="/static/js/jquery-ui.min.js"></script-->
+<script type="text/javascript" language="javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" language="javascript" src="/static/js/jquery-1.7.1.min.js"></script>
+
+{% block static %}
+{% endblock %}
+
+</head>
+
+<body>
+<div id="appendParent"></div>
+
+
+<div class="wrap">
+    <div id="header">
+        <h1><a href="#"><span>资产管理系统</span></a></h1>
+        <div class="login">
+                您好，<span id="navSiteMasterName">admin</span>
+                &nbsp;&nbsp;[ <a href="#">退出</a> ]
+        </div>
+    </div>
+
+    <div class="main mt_2">
+        <table class="mainframe">
+            <tr>
+                <td class="side">
+                    <div class="bm">
+                        <ul id="leftFuncMenu" class="nav">
+    <li id="li_9" class="open_h"><a href="/mywork" onclick="javascript:return changeFunc(this, 25593427);"><em></em>我的工作台</a></li>
+    
+                            <li id="li_19" class="open_s">
+                                <a href="javascript:;" onclick="displayMenu(19, 's');"><em></em>基础数据管理</a>
+                                <ul>
+    <li id="li_1901" class=""><a href="/addfixedasset/" onclick="javascript:return changeFunc(this, 25593427);"><span>新增固定资产</span></a></li>
+    <li id="li_1901" class=""><a href="#" onclick="javascript:return changeFunc(this, 25593427);"><span>新增固定资产类别</span></a></li>
+    <li id="li_1901" class=""><a href="#" onclick="javascript:return changeFunc(this, 25593427);"><span>新增岗位配备数据</span></a></li>
+                                </ul>
+                            </li>
+                            
+                            <li id="li_11" class="open_s">
+                                <a href="javascript:;" onclick="displayMenu(11, 's');"><em></em>固定资产管理</a>
+                                <ul>
+    <li id="li_1101" class=""><a href="/viewfixedassets/" onclick="javascript:return changeFunc(this, 25593427);"><span>查看固定资产</span></a></li>
+                                </ul>
+                            </li>
+                            
+                            <li id="li_13" class="close_s">
+                                <a href="javascript:;" onclick="displayMenu(13, 's');"><em></em>设备信息数据管理</a>
+                                <ul>
+    <li id="li_1301" class=""><a href="/VEQ/1" ><span>查看设备信息</span></a></li>
+    <li id="li_1901" class=""><a href="/ADDE" ><span>新增设备信息</span></a></li>
+    <li id="li_1901" class=""><a href="/allot/1" ><span>设备流动数据</span></a></li>
+                                </ul>
+                            </li>
+                            <li id="li_16"  class="close_s">
+                                <a href="javascript:;" onclick="displayMenu(16, 's');"><em></em>耗材数据管理</a>
+                                <ul>
+    <li  class=""><a href="/viewcom/1" ><span>查看耗材信息</span></a></li>
+    <li  class=""><a href="/outcom/1" ><span>耗材配发信息</span></a></li>
+                                </ul>
+                            </li>
+
+                            <li id="li_12" class="open_s">
+                                <a href="javascript:;" onclick="displayMenu(12, 's');"><em></em>岗位配备数据管理</a>
+                                <ul>
+    <li id="li_1201" class=""><a href="#" onclick="javascript:return changeFunc(this, 25593427);"><span>查看岗位配备数据</span></a></li>
+    <li id="li_1202" class=""><a href="#" onclick="javascript:return changeFunc(this, 25593427);"><span>修改岗位配备数据</span></a></li>
+                                </ul>
+                            </li>
+
+                            <li id="li_14" class="close_s">
+                                <a href="javascript:;" onclick="displayMenu(14, 's');"><em></em>工程科研项目管理</a>
+                                <ul>
+    <li id="li_1405" class=""><a href="/viewpro/1" onclick="javascript:return changeFunc(this, 25593427);"><span>查看工程科研项目</span></a></li>
+    <li id="li_1405" class=""><a href="/viewformals/1" onclick="javascript:return changeFunc(this, 25593427);"><span>查看项目办理进度</span></a></li>
+                                </ul>
+                            </li>
+                            
+                            <li id="li_15" class="open_s">
+                                <a href="javascript:;" onclick="displayMenu(15, 's');"><em></em>用户管理</a>
+                                <ul>
+                                    <li id="li_1503" class=""><a href="/usermanage" onclick="javascript:return changeFunc(this, 25593427);"><span>用户管理</span></a></li>
+                                    <li id="li_1503" class=""><a href="/usermanage/department_jobname" onclick="javascript:return changeFunc(this, 25593427);"><span>部门/岗位名称管理</span></a></li>
+                                </ul>
+                            </li>
+                            <li id="li_17" class="close_s">
+                                <a href="javascript:;" onclick="displayMenu(17, 's');"><em></em>统计</a>
+                                <ul>
+    <li id="li_1405" class=""><a href="/account" onclick="javascript:return changeFunc(this, 25593427);"><span>查看统计</span></a></li>
+                                </ul>
+                            </li>
+
+<!--script>
+
+var closeLiId = cookie.get("closeLiId");
+if(closeLiId != null){
+    $("li[class=open_s], li[class=close_s]").each(function(){
+        if(closeLiId.indexOf($(this).attr("id").replace("li_", "")) > -1){
+            $(this).attr("class", "close_s");
+        }
+        else{
+            $(this).attr("class", "open_s");
+        }
+    });
+}
+
+$("li[class=open_s] a, li[class=close_s] a").click(function(){
+
+    var closeLiId = "";
+    $("li[class=close_s]").each(function(){
+        closeLiId +=  $(this).attr("id").replace("li_", "") + ",";
+    });
+
+    if(closeLiId != "")
+        closeLiId = closeLiId.substring(0, closeLiId.length - 1);
+
+    cookie.saveCookie("closeLiId", closeLiId, null, "ta.qq.com");
+
+    
+});
+
+</script-->                        
+                        </ul>
+                    </div>
+                </td>
+
+                {% block contents %} {% endblock %}
+
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

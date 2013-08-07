@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}
+修改用户
+{% endblock %}
+{% block contents %}
+<script type="text/javascript">
+function resetpw(user_id){
+        $.ajax({
+            url: '/usermanage/resetpw',
+            type: 'POST',
+            data: {'user_id': user_id},
+            dataType: 'json',
+            success: function(data){
+                alert(data.result);
+            },
+            error: function(){
+                alert('重置失败');
+            }
+        });
+    }
+
+</script>
+
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('userManage.userList') }}">用户管理</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('userManage.modifyUser', user_id=data.user_id) }}">修改用户</a>
+    </div>
+
+    <div class='bm'>
+        <h3>修改用户</h3>
+
+        <form action='{{ url_for('userManage.modifyUser', user_id=data.user_id) }}' method='POST'>
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            登录名（不可修改）：</td>
+                        <td>
+                            <span style='float:left;' name='login_name'>{{ data.user.login_name }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            用户名：
+                        </td>
+                        <td>
+                            <input type='text' style='float:left;' name='username' value='{{ data.user.username }}' />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            密码： 
+                        </td>
+                        <td>
+                            <input type='button' onclick='resetpw("{{ data.user.id }}")' style='float:left;' name='password' value='重置' />
+                            <span style='float:left;'>(重置密码为:123456, 请及时修改密码)</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            电话/手机： 
+                        </td>
+                        <td>
+                            <input type='text' style='float:left;' name='tel' value='{{ data.user.tel }}' />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            部门名称： 
+                        </td>
+                        <td>
+                            <select id="department" class="acSelect" name="department_id" style='float:left;'> 
+                                <option value="{{ data.department.id }}">{{ data.department.name }}</option>
+                                {% for i in data.departments %}
+                                <option value="{{ i.id }}">{{ i.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            岗位名称： 
+                        </td>
+                        <td>
+                            <select id="jobname" class="acSelect" name="jobname_id" style='float:left;'> 
+                                <option value="{{ data.jobname.id }}">{{ data.jobname.name }}</option>
+                                {% for jobname in data.jobnames %}
+                                <option value="{{ jobname.id }}">{{ jobname.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            角色权限： 
+                        </td>
+                        <td>
+                            <select id="role" class="acSelect" name="role" style='float:left;'> 
+                                <option value="{{ data.user.role }}">{{ data.role_name }}</option>
+                                {% for i in data.roles %}
+                                <option value="{{ i.role_num }}">{{ i.role_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center>
+         <button class='pn pnc' style='width:50px;'>保存</button>
+         <a href='{{ url_for('userManage.userList')}}'><button class='pn pnc' style='width:50px;'>返回</button></a>
+        </center>
+        </form>
+    </div>
+</td>
+{% endblock %}

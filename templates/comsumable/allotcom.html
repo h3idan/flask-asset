@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}
+添加耗材信息
+{% endblock %}
+{% block contents %}
+<link type="text/css" rel="stylesheet" href="/static/css/datepicker.css" />
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" language="javascript" src="/static/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+    $(function(){   
+        $('#dp1').datepicker({format:'yyyy-mm-dd'});
+    });
+</script>
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/allot">耗材配发信息</a>
+    </div>
+    <div class='bm'>
+        <h3>耗材配发信息</h3>
+        <form action = "" method = "POST">
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            耗材编码：
+                        </td>
+                        <td>
+                            <select name = 'comsumable_id' style="float:left;">
+                            <option value="0"  selected="selected" >请选择</option>
+                            {% for c in comsumable %}
+                            <option value="{{c.id}}" >{{c.code}}</option>
+                            {% endfor %}
+                            </select>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            领取时间：
+                        </td>
+                        <td>
+                            <input id="dp1" type="text" class="px acInput" name="out_time" style='float:left;' />
+                         </td>
+                    </tr>          
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            领取单位：
+                        </td>
+                        <td>
+                        <input type="text" class="px acInput" name="get_unit" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            领取数量：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="get_count" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            领取人员：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="receiptor" style='float:left;' />
+                         </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center><button class='pn pnc' style='width:50px; margin-top:10px'>保存</button></center>
+    </form>
+    </div>
+</td>
+{% endblock %}

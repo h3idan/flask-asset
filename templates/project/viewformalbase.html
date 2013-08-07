@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+添加耗材信息
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/allot">项目办理信息</a>
+    </div>
+    <div class='bm'>
+        <h3>项目办理信息</h3>
+        <form action = "" method = "POST">
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            办理手续：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" style='float:left;' value="{{f.procedure}}" readonly="readonly" />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            办理时间：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" style='float:left;' value="{{f.time}}" readonly="readonly" />
+                         </td>
+                    </tr>          
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            办理图片：
+                        </td>
+                        <td>
+                            <img src="/static/media/{{f.image}}" style='float:left;'/>
+                         </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </form>
+    </div>
+</td>
+{% endblock %}

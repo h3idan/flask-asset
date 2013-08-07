@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+添加耗材信息
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/allot">添加工程信息</a>
+    </div>
+    <div class='bm'>
+        <h3>添加工程信息</h3>
+        <form action = "" method = "POST">
+        <div class='box'>
+            <table>
+                <tbody>          
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            工程编号：
+                        </td>
+                        <td>
+                        <input type="text" class="px acInput" name="code" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            工程名称：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="name" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            工程状态：
+                        </td>
+                        <td>
+                            <select name = 'status' style="float:left;">
+                            <option value="0" >完成</option>
+                            <option value="1" selected="selected">进行中</option>
+                            </select>
+                         </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center><button class='pn pnc' style='width:50px; margin-top:10px'>保存</button></center>
+    </form>
+    </div>
+</td>
+{% endblock %}

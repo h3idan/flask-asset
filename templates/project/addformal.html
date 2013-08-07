@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}
+添加耗材信息
+{% endblock %}
+{% block contents %}
+<link type="text/css" rel="stylesheet" href="/static/css/datepicker.css" />
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" language="javascript" src="/static/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+    $(function(){   
+        $('#dp1').datepicker({format:'yyyy-mm-dd'});
+    });
+</script>
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/allot">添加工程办理信息</a>
+    </div>
+    <div class='bm'>
+        <h3>添加工程办理信息</h3>
+        <form action = "" method = "POST" enctype="multipart/form-data">
+        <div class='box'>
+            <table>
+                <tbody>          
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            工程名称：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="name" style='float:left;' value="{{p.name}}" readonly="readonly"/>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            办理日期：
+                        </td>
+                        <td>
+                            <input id="dp1" type="text" class="px acInput" name="time" style='float:left;'  />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            项目办理手续：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="procedure" style='float:left;'  />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            项目手续图片：
+                        </td>
+                        <td>
+                            <input type="file"  name="image" style='float:left;'  />
+                         </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center><button class='pn pnc' style='width:50px; margin-top:10px'>保存</button></center>
+    </form>
+    </div>
+</td>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}
+修改权限
+{% endblock %}
+
+{% block static %}
+<style>
+    .left_td{
+        width: 235px;
+    }
+</style>
+
+<script type='text/javascript'>
+   /* function check_box(){
+        var permissions = $('.permission_box');
+        for (var i=0; i < permissions.length; i++){
+            if (permissions[i].checked == true){
+                alert(permissions[i].val());
+            };
+        };
+    
+    
+    }
+    */
+</script>
+
+{% endblock %}
+
+{% block contents %}
+
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('userManage.userList') }}">用户管理</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('userManage.permissionManage', user_id=data.user_id) }}">修改权限</a>
+    </div>
+
+    <div class='bm'>
+        <h3>修改权限</h3>
+
+        <form action='{{ url_for('userManage.permissionManage', user_id=data.user_id) }}' method='POST'>
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td align="right" class="acName left_td">
+                            <span style="color:red;">*</span>
+                            登录名（不可修改）：</td>
+                        <td>
+                            <span style='float:left;' name='login_name'>{{ data.user.login_name }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName left_td">
+                            <span style="color:red;">*</span>
+                            用户权限：
+                        </td>
+                        <td>
+                            <div id='permission' style='width:300px; height:200px; overflow-y:scroll'>
+                            {% for permission in data.permissions %}
+                            <span class='permission_all' style='width:100%; float:left' >
+                                <input class='permission_box' style='float:left' type='checkbox' name='{{ permission.codename }}' value='{{ permission.id }}' />
+                                <span style='float:left' >{{ permission.name  }}</span>
+                            </span>
+                            {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center>
+         <button class='pn pnc' style='width:50px;'>保存</button>
+         <a href='{{ url_for('userManage.userList')}}'><button class='pn pnc' style='width:50px;'>返回</button></a>
+        </center>
+        </form>
+    </div>
+</td>
+{% endblock %}

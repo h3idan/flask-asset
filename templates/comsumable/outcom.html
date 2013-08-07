@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+耗材配发数据
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/outcom/1">耗材配发数据</a>
+    </div>
+    <div class='bm'>
+        <h3>耗材配发数据</h3>
+        <div class="controlbar cl nobar mbm">
+            <ul calss='datebar cl'>
+                <li><a href='/allotcom'><button class='pn pnc' style='width:50px; margin-bottom:10px; margin-left:700px;'>添加</button></a>
+                </li>
+            </ul>
+        </div>
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>耗材编码</th>
+                        <th>领取时间</th>
+                        <th>领取单位</th>
+                        <th>领取数量</th>
+                        <th>领取人员</th>
+                        <th>操作</th>
+                    </tr>
+                    {% for g in getcom %}
+                    <tr>
+                        <td><center><a href="">{{g.comsumable.code}}</a></center></td>
+                        <td><center>{{g.out_time}}</center></td>
+                        <td><center>{{g.get_unit}}</center></td>
+                        <td><center>{{g.get_count}}</center></td>
+                        <td><center>{{g.receiptor}}</center></td>
+                        <th><a href=''>修改</a></th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+            <div class=pagination>
+                {% if pagination.page != 1 %}
+                <a href="{{pagination.page - 1}}">上一页</a>
+                {% endif %}
+                {% for page in pagination.iter_pages() %}
+                {% if page %}
+                {% if page != pagination.page %}
+                <a href="{{pagination.page}}">{{ page }}</a>
+                {% else %}
+                <strong>{{ page }}</strong>
+                {% endif %}
+                {% else %}
+                <span class=ellipsis>…</span>
+                {% endif %}
+                {% endfor %}
+                {% if pagination.has_next %}
+                <a href="{{pagination.page + 1}}">下一页</a>
+                {% endif %}
+            </div>
+    </div>
+</td>
+{% endblock %}
+
+

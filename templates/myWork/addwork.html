@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}
+新增清单
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('myWork.myWork') }}">工作清单</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('myWork.addWork') }}">新增清单</a>
+    </div>
+
+    <div class='bm'>
+        <h3>新增清单</h3>
+
+        <form action='{{ url_for('myWork.addWork') }}' method='POST'>
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            工作内容：</td>
+                        <td>
+                            <textarea  style='float:left; width:300px; height:120px; ' name='details'></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            紧急程度:
+                        </td>
+                        <td>
+                            <select id="acType" class="acSelect" name="emergency" style='float:left;'>
+                                <option value="0">重要紧急</option>
+                                <option value="1">紧急不重要</option>
+                                <option value="2">重要不紧急</option>
+                                <option value="3">不重要不紧急</option>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            完成情况： 
+                        </td>
+                        <td>
+                            <select id="acType" class="acSelect" name="complate" style='float:left; width:68px'>
+                                <option value="0">未完成</option>
+                                <option value="1">已完成</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center>
+         <button class='pn pnc' style='width:50px;'>添加</button>
+         <a href='{{ url_for('myWork.myWork') }}'><button class='pn pnc' style='width:50px;'>重置</button></a>
+        </center>
+        </form>
+    </div>
+</td>
+{% endblock %}

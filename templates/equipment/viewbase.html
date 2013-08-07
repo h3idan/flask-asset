@@ -1,0 +1,351 @@
+{% extends 'base.html' %}
+{% block title %}
+修改设备信息
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/VEQ">设备详细信息</a>
+    </div>
+
+    <div class='bm'>
+        <h3>设备详细信息</h3>
+
+        <div class='box'>
+            <table>
+                <tbody>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备类别:
+                </td>
+                <td style="text-align:left;">
+                    {{e.equ_type}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备代码:
+                </td>
+                <td style="text-align:left;">
+                    {{e.code}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备名称：</td>
+                <td style="text-align:left;">
+                    {{e.name}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    类别代码： 
+                </td>
+                <td style="text-align:left;">
+                    {{e.type_code}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    类别名称： 
+                </td>
+                <td style="text-align:left;">
+                    {{e.type_name}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    品牌：
+                </td>
+                <td style="text-align:left;">
+                    {{e.brand}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    规格型号：
+                </td>
+                <td style="text-align:left;">
+                    {{e.type_model}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    机身号：
+                </td>
+                <td style="text-align:left;">
+                    {{e.equ_num}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    用途：
+                </td>
+                <td style="text-align:left;">
+                    {{e.by_use}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    使用单位：
+                </td>
+                <td style="text-align:left;">
+                    {{e.use_unit}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    单位代码：
+                </td>
+                <td style="text-align:left;">
+                    {{e.unit_num}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    保管人：
+                </td>
+                <td style="text-align:left;">
+                    {{e.depository}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    存放地点：
+                </td>
+                <td style="text-align:left;">
+                    {{e.location}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    购置日期：
+                </td>
+                <td style="text-align:left;">
+                    {{e.buy_time}}
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    更新日期：
+                </td>
+                <td style="text-align:left;">
+                    {{e.put_time}}
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    打印日期：
+                </td>
+                <td style="text-align:left;" >
+                    {{e.out_time}}
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    使用现状：
+                </td>
+                <td style="text-align:left;">
+                    {{e.status}}
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    备注：
+                </td>
+                <td style="text-align:left;">
+                    {{e.details}}
+                 </td>
+            </tr>
+            {% if e.e_num == 0 %}
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备系统： 
+                </td>
+                <td style="text-align:left;">
+                    {{e.system}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    MAC地址：
+                </td>
+                <td style="text-align:left;">
+                    {{e.mac_addr}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    系统更新日期：
+                </td>
+                <td style="text-align:left;">
+                    {{e.upd_sys_time}}
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    硬盘个数：
+                </td>
+                <td style="text-align:left;">
+                    {{e.disk_num}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    硬盘型号：
+                </td>
+                <td style="text-align:left;">
+                    {{e.disk_type}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    硬盘容量：
+                </td>
+                <td style="text-align:left;">
+                    {{e.disk_volume}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    硬盘序列号：
+                </td>
+                <td style="text-align:left;">
+                    {{e.disk_code}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    IP地址：
+                </td>
+                <td style="text-align:left;">
+                    {{e.ip_address}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    主机名：
+                </td>
+                <td style="text-align:left;">
+                    {{e.hostname}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    使用许可证：
+                </td>
+                <td style="text-align:left;">
+                    {{e.license}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    cpu规格：
+                </td>
+                <td style="text-align:left;">
+                    {{e.cpu}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    内存容量：
+                </td>
+                <td style="text-align:left;">
+                    {{e.memory_capacity}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    光驱类型：
+                </td>
+                <td style="text-align:left;">
+                    {{e.cd_type}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    光驱型号：
+                </td>
+                <td style="text-align:left;">
+                    {{e.cd_type_num}}
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    有无软驱：
+                </td>
+                <td style="text-align:left;">
+                    {{e.fd}}
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    有无读卡器：
+                </td>
+                <td style="text-align:left;">
+                    {{e.card_reader}}
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    外接设备：
+                </td>
+                <td style="text-align:left;">
+                    {{e.external}}
+                 </td>
+            </tr>
+            {% endif%}
+            {% if e.e_num == 1 %}
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    密级：
+                </td>
+                <td style="text-align:left;">
+                    {{e.secret_degree}}
+                </td>
+            </tr>
+            {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</td>
+{% endblock %}

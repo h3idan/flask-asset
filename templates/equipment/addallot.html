@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}
+修改设备信息
+{% endblock %}
+{% block contents %}
+<link type="text/css" rel="stylesheet" href="/static/css/datepicker.css" />
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" language="javascript" src="/static/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+    $(function(){   
+        $('#dp1').datepicker({format:'yyyy-mm-dd'});
+    });
+</script>
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/allot">设备流动数据</a>
+    </div>
+
+    <div class='bm'>
+        <h3>设备流动数据</h3>
+        <form action = "" method = "POST">
+        <div class='box'>
+            <table>
+                <tbody>          
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            选择设备：
+                        </td>
+                        <td>
+                            <select name = 'equipment_id'  style="float:left;">
+                            <option value="0"  selected="selected" >请选择</option>
+                            {% for e in equipment %}
+                            <option value="{{e.id}}" >{{e.code}}</option>
+                            {% endfor %}
+                            </select>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            选择领取人：
+                        </td>
+                        <td>
+                            <select name = 'user_id'  style="float:left;">
+                            <option value="0"  selected="selected">请选择</option>
+                            {% for u in user %}
+                            <option value="{{u.id}}">{{u.username}}</option>
+                            {%endfor%}
+                            </select>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            发配日期：
+                        </td>
+                        <td>
+                            <input id="dp1" type="text" class="px acInput" name="allot_time" style='float:left;'  />
+                         </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center><button class='pn pnc' style='width:50px; margin-top:10px'>保存</button></center>
+    </form>
+    </div>
+</td>
+{% endblock %}

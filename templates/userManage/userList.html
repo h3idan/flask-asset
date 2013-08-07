@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+用户管理
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="{{ url_for('userManage.userList') }}">用户列表</a>
+    </div>
+
+    <div class='bm'>
+        <h3>用户列表</h3>
+        <div class="controlbar cl nobar mbm">
+            <ul calss='datebar cl'>
+                <li><a href='{{ url_for('userManage.addUser') }}'><button class='pn pnc' style='width:50px; margin-bottom:10px; margin-left:700px;'>添加</button></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class='box'>
+            <table>
+                <tbody>
+                <tr>
+                    <th>登录名(唯一)</th>
+                    <th>用户名</th>
+                    <th>电话/手机</th>
+                    <th>部门名称</th>
+                    <th>岗位名称</th>
+                    <th>系统角色</th>
+                    <th>操作</th>
+                </tr>
+                {% for user in data %}
+                <tr>
+                    <td title='{{ user.login_name }}'><center>{{ user.login_name }}</center></td>
+                    <td><center>{{ user.username }}</center></td>
+                    <td><center>{{ user.tel }}</center></td>
+                    <td><center>{{ user.department.name }}</center></td>
+                    <td><center>{{ user.jobname.name }}</center></td>
+                    <td><center>{{ user.role_name }}</center></td>
+                    <td><center>
+                            <a href='{{ url_for('userManage.permissionManage', user_id=user.id) }}'>权限</a>
+                            <a href='{{ url_for('userManage.modifyUser', user_id=user.id) }}'>修改</a></center></td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        <a>上一页</a><span></span><a>下一页</a> </div>
+</td>
+{% endblock %}

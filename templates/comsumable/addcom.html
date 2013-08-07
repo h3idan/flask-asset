@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block title %}
+添加耗材信息
+{% endblock %}
+{% block contents %}
+<link type="text/css" rel="stylesheet" href="/static/css/datepicker.css" />
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" language="javascript" src="/static/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+    $(function(){   
+        $('#dp1').datepicker({format:'yyyy-mm-dd'});
+    });
+</script>
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/allot">添加耗材数据</a>
+    </div>
+    <div class='bm'>
+        <h3>添加耗材数据</h3>
+        <form action = "" method = "POST">
+        <div class='box'>
+            <table>
+                <tbody>          
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            耗材编号：
+                        </td>
+                        <td>
+                        <input type="text" class="px acInput" name="code" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            耗材名称：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="name" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            存放位置：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="position" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            品牌型号：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="brand_type" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            价格：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="price" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            数量：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="counts" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            适配机型：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="adaptive" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            购买单位：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="buy_unit" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            购买单位电话：
+                        </td>
+                        <td>
+                            <input type="text" class="px acInput" name="buy_unit_tel" style='float:left;' />
+                         </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            入库日期：
+                        </td>
+                        <td>
+                            <input id="dp1" type="text" class="px acInput" name="into_time" style='float:left;' />
+                         </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <center><button class='pn pnc' style='width:50px; margin-top:10px'>保存</button></center>
+    </form>
+    </div>
+</td>
+{% endblock %}

@@ -1,0 +1,206 @@
+<script type="text/javascript" language="javascript" src="/static/js/bootstrap-datepicker.js"></script>
+<link type="text/css" rel="stylesheet" href="/static/css/datepicker.css" />
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript">
+    $(function(){   
+        $('#dp1').datepicker({
+                    format: 'yyyy-mm-dd'
+                });
+        $('#dp2').datepicker({
+                    format: 'yyyy-mm-dd'
+                });
+        $('#dp3').datepicker({
+                    format: 'yyyy-mm-dd'
+                });
+    });
+</script>
+
+<div class='box'>
+    <table>
+        <tbody id='tb1'>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备类别:
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="equ_type" style='float:left' value="其他设备" readonly="readonly"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备代码:
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="code" style='float:left' />
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    设备名称：</td>
+                <td>
+                    <input type="text" class="px acInput" name="name" style='float:left'/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    类别代码： 
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="type_code" style='float:left'/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    类别名称： 
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="type_name" style='float:left'/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    品牌：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="brand" style='float:left' />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    规格型号：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="type_model" style='float:left' />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    机身号：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="equ_num" style='float:left' />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    用途：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="by_use" style='float:left' />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    使用单位：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="use_unit" style='float:left' />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    单位代码：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="unit_num" style='float:left' />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    保管人：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="depository" style='float:left' />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    存放地点：
+                </td>
+                <td>
+                    <span style="float:left">
+                        <input type="text" class="px acInput" name="location" style='float:left' />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    购置日期：
+                </td>
+                <td>
+                    <input id="dp1" type="text" class="px acInput" name="buy_date" style='float:left;' />
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    更新日期：
+                </td>
+                <td>
+                    <input id="dp2" data-date-format="mm/dd/yy" type="text" class="px acInput" name="put_date" style='float:left;' />
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    打印日期：
+                </td>
+                <td>
+                    <input id="dp3" data-date-format="mm/dd/yy" type="text" class="px acInput" name="out_date" style='float:left;' />
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    使用现状：
+                </td>
+                <td>
+                    <select name = 'status'  style="float:left;">
+                    <option value="0" >已废弃</option>
+
+                    <option value="1" selected="selected">使用中</option>
+                    </select>
+                 </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    备注：
+                </td>
+                <td>
+                    <textarea rows="3" cols="20"  name="details" style='float:left;' ></textarea>
+                 </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<center><input type='submit' class='pn pnc' style='width:50px; margin-top:10px' value='保存'/></center>
+ 

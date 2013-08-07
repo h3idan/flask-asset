@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}
+添加设备信息
+{% endblock %}
+{% block contents %}
+<script type="text/javascript" language="javascript" src="/static/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    function clusterhuitu(){
+        var value = $('select').val();
+        if (value == 0){urls='/computer'};
+        if (value == 1){urls='/mobile'};
+        if (value == 2){urls='/other'};
+        $.ajax({
+                url:urls,
+                success:function(data,textStatus){ 
+                    $('#bb1').html(data);
+                },
+                error:function(){
+                    $('#bb1').html('<font color="red">对不起，信息加载失败。</font>');
+                }
+        });
+}; 
+</script>
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/ADDE">添加设备信息</a>
+    </div>
+<form action="" method="POST">
+    <div id = 'bb1' class='bm'>
+
+        <h3>添加设备信息</h3>
+
+        <div class='box'>
+            <table>
+                <tbody id='tb1'>
+
+                    <tr>
+                        <td align="right" class="acName">
+                            <span style="color:red;">*</span>
+                            设备类别:
+                        </td>
+                        <td>
+                            <select name = 'status' id='select1' style="float:left;" onchange="clusterhuitu()">
+                            <option id='op0' value='-1' selected="selected" >请选择要添加设备类型</option>
+                            <option id='op1' value="0" >计算机设备</option>  
+                            <option id='op2' value="1" >移动载体设备</option>
+                            <option id='op3' value="2" >其他设备</option>
+                            </select>
+                        </td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
+        
+
+    </div>
+</form>
+</td>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}
+查看设备信息
+{% endblock %}
+{% block contents %}
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/allot/1">设备流动数据</a>
+    </div>
+    <div class='bm'>
+        <h3>设备流动数据</h3>
+        <span>{{msg}}</span>
+        <div class="controlbar cl nobar mbm">
+            <ul calss='datebar cl'>
+                <li><a href='/addallot'><button class='pn pnc' style='width:50px; margin-bottom:10px; margin-left:700px;'>添加</button></a>
+                </li>
+            </ul>
+        </div>
+        <div class='box'>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>设备编码</th>
+                        <th>配发时间</th>
+                        <th>领取人</th>
+                        <th>操作</th>
+                    </tr>
+                    {% for a in allot %}
+                    <tr>
+                        <td><center><a href="/viewbase/{{a.equipment_id}}">{{a.equipment.code}}</a></center></td>
+                        <td><center>{{a.allot_time}}</center></td>
+                        <td ><center>{{a.user.username}}</center></td>
+                        <th><a href='/mallot/{{a.id}}'>修改</a></th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+            <div class=pagination>
+                {% if pagination.page != 1 %}
+                <a href="{{pagination.page - 1}}">上一页</a>
+                {% endif %}
+                {% for page in pagination.iter_pages() %}
+                {% if page %}
+                {% if page != pagination.page %}
+                <a href="{{pagination.page}}">{{ page }}</a>
+                {% else %}
+                <strong>{{ page }}</strong>
+                {% endif %}
+                {% else %}
+                <span class=ellipsis>…</span>
+                {% endif %}
+                {% endfor %}
+                {% if pagination.has_next %}
+                <a href="{{pagination.page + 1}}">下一页</a>
+                {% endif %}
+            </div>
+    </div>
+</td>
+{% endblock %}
+
+
