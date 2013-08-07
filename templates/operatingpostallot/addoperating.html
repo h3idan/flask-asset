@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}
+新增岗位配备信息
+{% endblock %}
+{% block contents %}
+<link type="text/css" rel="stylesheet" href="/static/css/datepicker.css" />
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" language="javascript" src="/static/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+    $(function(){   
+        $('#dp1').datepicker({format:'yyyy-mm-dd'});
+        $('#dp2').datepicker({format:'yyyy-mm-dd'});
+        $('#dp3').datepicker({format:'yyyy-mm-dd'});
+        $('#dp4').datepicker({format:'yyyy-mm-dd'});
+    });
+</script>
+<td class='content'>
+    <div class='bm_h cl'></div>
+    <div class="path">
+        <a href="#">资产系统</a>
+        <em>&rsaquo;</em> <a href="/addoperating">新增岗位配备信息</a>
+    </div>
+
+    <div class='bm'>
+        <h3>新增岗位配备信息</h3>
+        <form action = "" method = "POST">
+        <div class='box'>
+            <table>
+                <tbody>          
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+ 					流动信息：                   
+                </td>
+                <td> 
+                    <input type="text" class="px acInput" name="allotment" style='float:left'  />
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    使用年限:
+                </td>
+                <td>
+                    <input type="text" class="px acInput" name="age_limit" style='float:left' />
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="acName">
+                    <span style="color:red;">*</span>
+                    岗位名称：</td>
+                <td>
+					<select name='jobname_id' style="float:left;">
+					<option value="0" selected="selected">请选择</option>
+					{% for j in jobname %}
+						<option  value="{{j.id}}">{{j.name}}</option>
+					{% endfor %}
+					</select>
+                    <!--input type="text" class="px acInput" name="jobname_id" style='float:left' /-->
+                </td>
+            </tr>
+			</tbody>
+            </table>
+        </div>
+        
+        <center><input type=submit class='pn pnc' style='width:50px; margin-top:10px' value='保存'></input></center>
+    </form>
+    </div>
+</td>
+{% endblock %}

@@ -13,9 +13,11 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://123:123456@192.168.8.103/flaskasset'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:heidan@127.0.0.1/flaskasset'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:xuchao@127.0.0.1/flaskasset'
+
 app.config['SQLALCHEMY_MIGRATE_REPO'] = os.path.join(os.path.dirname(__file__), 'db_repository')
 db = SQLAlchemy(app)
 

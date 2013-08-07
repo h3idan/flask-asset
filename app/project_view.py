@@ -8,14 +8,25 @@
 
 
 from flask import Blueprint, request, session, \
-        url_for, render_template, redirect, flash
-from models import Project, db, Formalities, Acceptance
-import pdb, random, PIL.Image as Image
+        url_for, render_template, redirect, flash, send_from_directory
+from models import Project, db, Formalities, Acceptance, app
+import os, pdb, random, PIL.Image as Image
 from flask_sqlalchemy import  Pagination
 from config import POSTS_PER_PAGE, UPLOAD_FOLDER
 from app import get_obj_for_page
+from werkzeug import secure_filename
+from flask.ext.wtf import Form
+from wtforms import *
+
+app.config['UPLOAD_FOLDER']=UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 project = Blueprint('project', __name__)
+
+class Formalform(Form):
+	time = DateTimeField('time')
+	procedure = TextField('procedure')
+	image = FileField('image')	
 
 @project.route('/viewpro/<int:page>')
 def viewproject(page):
@@ -68,26 +79,28 @@ def viewformals(page):
 @project.route('/addformal/<int:p_id>', methods=['GET','POST'])
 def viewaddformal(p_id):
 	p = Project.query.get(p_id)
-	if request.method == 'POST':
+	form = Formalform(request.form)
+	if request.method == 'POST' and form.validate():
 		time = request.form['time']
 		procedure = request.form['procedure']
-		image = request.files['image']
-		image_name = '''%s.jpg'''%(random.randint(10000,99999))
-		image.save(UPLOAD_FOLDER+'/'+image_name)
-		try:
-			img = Image.open(UPLOAD_FOLDER+'/'+image_name)#打开原图
-		except  Exception, err:
-			print "pic is not file"
-			return 
-		nimg = img.resize((120,150))#缩图
-		nimg.save(UPLOAD_FOLDER+'/'+image_name)#覆盖原图
-		f = Formalities(time=time, procedure=procedure, image=image_name, project_id=p_id)
-		try:
-			db.session.add(f)
-			db.session.commit()
-		except Exception,err:
-			print err
-			db.session.flush()
+		file = request.files['image']
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+ 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			try:
+				img = Image.open(UPLOAD_FOLDER+'/'+filename)#打开原图
+			except  Exception, err:
+				print "pic is not file"
+				return 
+			nimg = img.resize((120,150))#缩图
+			nimg.save(UPLOAD_FOLDER+'/'+filename)#覆盖原图
+			f = Formalities(time=time, procedure=procedure, image=filename, project_id=p_id)
+			try:
+				db.session.add(f)
+				db.session.commit()
+			except Exception,err:
+				print err
+				db.session.flush()
 		return redirect('/viewformal/%s/1'%(p_id))
 	return render_template('project/addformal.html', p=p)
 
@@ -95,3 +108,8 @@ def viewaddformal(p_id):
 def viewformalbase(f_id):
 	f = Formalities.query.get(f_id)
 	return render_template('project/viewformalbase.html', f=f)
+@project.route('/media/<filename>')
+def uploaded_file(filename):
+	return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
+def allowed_file(filename):
+	return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS

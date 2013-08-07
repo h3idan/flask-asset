@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block static %}
+<script type="text/javascript" language="javascript" src="/static/js/jquery.json-2.4.min.js"></script>
 <style>
     .left_td{
         width: 235px;
@@ -11,17 +12,23 @@
 </style>
 
 <script type='text/javascript'>
-   /* function check_box(){
-        var permissions = $('.permission_box');
-        for (var i=0; i < permissions.length; i++){
-            if (permissions[i].checked == true){
-                alert(permissions[i].val());
-            };
-        };
-    
-    
-    }
-    */
+
+    $(function(){
+        $.ajax({
+            url: '/usermanage/codename/{{ data.user_id }}',
+            type: 'POST',
+            data: {},
+            success: function(data){
+                var codenames = $.evalJSON(data);
+                for (var i=0; i < codenames.length; i++){
+                    $('#'+ codenames[i] +'').attr('checked', true);
+                };
+            },
+            error: function(){
+                alert('页面出现错误，请重新刷新页面')
+            }
+        })
+    })
 </script>
 
 {% endblock %}
@@ -60,7 +67,7 @@
                             <div id='permission' style='width:300px; height:200px; overflow-y:scroll'>
                             {% for permission in data.permissions %}
                             <span class='permission_all' style='width:100%; float:left' >
-                                <input class='permission_box' style='float:left' type='checkbox' name='{{ permission.codename }}' value='{{ permission.id }}' />
+                                <input class='permission_box' id='{{ permission.codename }}' style='float:left' type='checkbox' name='{{ permission.codename }}' value='{{ permission.id }}' />
                                 <span style='float:left' >{{ permission.name  }}</span>
                             </span>
                             {% endfor %}

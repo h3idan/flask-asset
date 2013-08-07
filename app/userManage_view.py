@@ -184,40 +184,60 @@ def permissionManage(user_id):
 
     old_permissions = []
     new_permissions = []
+    old_codenames = []
     user = User.query.get(int(user_id))
     permissions = Permissions.query.all() 
     user_permissions = UserPermissions.query.filter_by(user_id=user.id).all()
     
+    for user_permission in user_permissions:
+        old_permissions.append(user_permission.permission_id)
+        codename = Permissions.query.filter_by(id=user_permission.permission_id).first().codename
+        old_codenames.append(codename)
+
     if user:
         if request.method == 'POST':
-
-            for user_permission in user_permissions:
-                old_permissions.append(user_permission.permission_id)
 
             form_datas = request.form.to_dict()
             for permission_id in form_datas.values():
                 new_permissions.append(int(permission_id))
             
-            new_builds = set(new_permissions) - set(old_permissions)
+            new_builds = set(new_permissions) - set(old_permissions)    # 求差集
             del_builds = set(old_permissions) - set(new_permissions)
             
-            print new_builds
-            print 'del_builds: %r' % del_builds
+
             if new_builds: 
-                for new_build in new_builds:
+                for new_build in list(new_builds):
                     db.session.add(UserPermissions(user_id, new_build))
+
             if del_builds:
-                for del_build in del_builds:
-                    print del_build
-                    db.session.delete(UserPermissions(user_id, del_build))
+                for del_build in list(del_builds):
+                    user_permission = UserPermissions.query.filter_by(user_id=user_id).\
+                            filter_by(permission_id=del_build).first()
+                    db.session.delete(user_permission)
             
-            db.session.expunge_all() 
             db.session.commit() 
+
             return redirect(url_for('.userList'))
         
     return render_template('userManage/permissionManage.html', data = locals())   
 
     
+@userManageView.route('/codename/<user_id>', methods=['get', 'post'])
+def codename(user_id):
+    '''
+        ajax, 返回codename，使得修改权限时候可以看到用户的当前权限
+    '''
+
+    old_codenames = []
+    user_permissions = UserPermissions.query.filter_by(user_id=user_id).all()
+    for user_permission in user_permissions:
+        codename = Permissions.query.filter_by(id=user_permission.permission_id).first().codename
+        old_codenames.append(codename)
+
+    import simplejson
+    codenames = simplejson.dumps(old_codenames)
+
+    return codenames
 
 
 
